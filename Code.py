@@ -9,7 +9,7 @@ import numpy as np
 import aspose.slides as slides
 import aspose.pydrawing as drawing
 Application = win32com.client.Dispatch("PowerPoint.Application" )
-Presentation = Application.Presentations.Open("C:\\Users\Zouaoui\Documents\programmation\python\zani.pptx")
+Presentation = Application.Presentations.Open("E:/GithubRepos/PPT-Presentation-controlled-by-hand-gesture/zani.pptx")
 print(Presentation.Name)
 Presentation.SlideShowSettings.Run()
 # Parameters
@@ -18,7 +18,7 @@ gestureThreshold = 300
 # Camera Setup
 cap = cv2.VideoCapture(0)
 cap.set(3, width)
-cap.set(4, height) 
+cap.set(4, height)
 # Hand Detector
 detectorHand = HandDetector(detectionCon=0.8, maxHands=1)
 # Variables
@@ -61,23 +61,23 @@ while True:
                     annotations = [[]]
                     annotationNumber = -1
                     annotationStart = False
- 
+
     else:
         annotationStart = False
- 
+
     if buttonPressed:
         counter += 1
         if counter > delay:
             counter = 0
             buttonPressed = False
- 
+
     for i, annotation in enumerate(annotations):
         for j in range(len(annotation)):
             if j != 0:
                 cv2.line(imgCurrent, annotation[j - 1], annotation[j], (0, 0, 200), 12)
- 
+
     cv2.imshow("Image", img)
- 
+
     key = cv2.waitKey(1)
     if key == ord('q'):
         break
